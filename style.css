@@ -1,0 +1,25 @@
+@charset "UTF-8";
+/* CSS Document */
+@import url('https://fonts.googleapis.com/css?family=Rammetto+One');
+
+
+body{
+	background-color: #110624 ;
+}
+
+h1{
+	font-family: 'Rammetto One', cursive;
+	color: #fff;
+}
+
+.jumbotron {
+    background-color: #110624 ;
+ 
+}
+
+.title{
+	margin-top: 30px;
+	margin-bottom: 30px;
+/*	border: 1px solid yellow;
+*/	
+}
