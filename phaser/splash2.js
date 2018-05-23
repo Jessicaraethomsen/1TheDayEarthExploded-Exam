@@ -13,11 +13,6 @@ var splash2 = {
 		
 		instructions.anchor.set(0.5);
 		
-		//what does twen do???
-		tween = game.add.tween(instructions).to({
-			y: game.world.centerY
-		}, 1000, Phaser.Easing.Bounce.Out, true);
-		tween.onComplete.add(onComplete, this);
 		
 		// Add the background sound
 		bgSound = game.add.audio('level2Music');
@@ -29,9 +24,6 @@ var splash2 = {
 			game.state.start("level2");
 		}, 10000);
 		
-		function onComplete() {
-    		this.tween = game.add.tween(instructions).to( { y: 700 }, 1000, Phaser.Easing.Exponential.Out, true, 10000);
-
-			}
+	
 	},
 }// JavaScript Document

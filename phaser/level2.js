@@ -28,6 +28,27 @@ var level2 = {
 		button.fixedToCamera = true;
 		button.visible = false;
 
+		//TIMER
+		
+		// Create a custom timer (global variable countDown + format function in game.js)
+		this.timer = game.time.create();
+
+		// Create a delayed event 1m and 30s from now
+		this.timerEvent = this.timer.add(Phaser.Timer.SECOND * countDown, this.endTimer, this);
+
+		// Start the timer
+		this.timer.start();
+
+		// Display the timer
+		this.txtTimer = game.add.text(900, 10, formatTime(Math.round((this.timerEvent.delay - this.timer.ms) / 1000)), {
+			font: "30px Rammetto One",
+			fill: "#e7ff00"
+		});
+		
+		this.txtTimer.font = 'Rammetto One';
+		this.txtTimer.fixedToCamera = true;
+		
+		
 	
 		
 		//  The platforms
@@ -204,7 +225,7 @@ var level2 = {
 		game.physics.arcade.overlap(this.player, this.bee, HitBee, null, this);
 
 
-		// Controls... 
+	// Controls... 
 		if (this.cursors.left.isDown) {
 			this.player.body.velocity.x = -150;
 
@@ -225,11 +246,29 @@ var level2 = {
 			this.jumper.play();
 		}
 
+		
+		this.tmp = formatTime(Math.round((this.timerEvent.delay - this.timer.ms) / 1000));
+
+		if (this.timer.running && this.tmp >= 0) {
+			this.txtTimer.text = formatTime(Math.round((this.timerEvent.delay - this.timer.ms) / 1000));
+		} else if (score < 85 && update === true) {
+			level2.loose();			
+			update = false;
+		}
+		
+		
+	},
+
+	
+	endTimer: function () {
+		// Stop the timer when the delayed event triggers
+		this.timer.stop();
 	},
 	
 	
+	
 		loose: function () {
-
+        'use strict';
 		this.player.kill();
 		button.visible = true;
 			
@@ -269,7 +308,7 @@ function CollectGasoline(player, gasoline) {
 	gasoline.kill();
 	//  And update the score
 	score += 5;
-	scoreText.text = 'Gasoline: ' + score;
+	scoreText.text = 'Jet fuel: ' + score;
 	
 }
 
@@ -281,10 +320,8 @@ function CollectSupplies(player, supply) {
 	this.watersound.play();
 	supply.kill();
 	score1++;
-	scoreTxt.setText('Water: ' + score1.toString());
+	scoreTxt.setText('Engine Parts: ' + score1.toString());
 }
-
-
 
 
 
@@ -305,8 +342,8 @@ function BackToShip2(player, ship){
 		}, 1900, 'Linear', true, 0);
 		
 		game.sound.stopAll(); 
-		setTimeout(function () {
-			game.state.start("splash2");
+		setTimeout(function() {
+			game.state.start("splash3");
 		}, 3000);
 	}
 }
