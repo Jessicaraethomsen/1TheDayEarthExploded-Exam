@@ -44,12 +44,15 @@ var boot = {
 
 		game.load.image('sky', 'assets/sky.png');
 		game.load.image('level2', 'assets/level2.png');
+		game.load.image('level3', 'assets/level3.png');
 		game.load.image('ground', 'assets/platform.png');
 		game.load.image('ground2', 'assets/platform2.png');
 		game.load.image('bubblept', 'assets/oxygen.png');
 		game.load.image('water', 'assets/glass.png');
 		game.load.image('gas', 'assets/gas.png');
 		game.load.image('bee', 'assets/bee.png');
+		game.load.image('food', 'assets/food.png');
+		game.load.image('jar', 'assets/jar.png');
 		game.load.image('engine', 'assets/engine.png');
 		game.load.image('ship', 'assets/ship.png');
 		game.load.spritesheet('spaceman', 'assets/spaceman.png', 32, 32);
@@ -66,8 +69,12 @@ var boot = {
 
 		// preloading all audio files
 	    game.load.audio('level1Music', 'audio/level1.mp3');
+		game.load.audio('level2Music', 'audio/level2.mp3');
+		
 		game.load.audio('intro', 'audio/intro.mp3');
 		game.load.audio('oxygen', 'audio/oxygen.wav');
+		game.load.audio('engine', 'audio/engine.wav');
+		game.load.audio('gas', 'audio/gas.wav');
 		game.load.audio('water', 'audio/water.wav');
 		game.load.audio('jump', 'audio/jump.wav');
 		game.load.audio('loss', 'audio/loss.mp3');
@@ -115,10 +122,6 @@ var boot = {
 		this.jellyfish.body.velocity.setTo(-50, 0);
 		this.jellyfish.body.bounce.set(1, 1);
 		
-		
-
-
-
 	},
 
 	update: function () {
@@ -133,7 +136,8 @@ var boot = {
 
 	actionOnClick: function () {
 		// launching level 1 splash screen
-		game.state.start('splash2');
+		game.state.start('splash1');
+		game.sound.stopAll(); 
 	}
 
 }

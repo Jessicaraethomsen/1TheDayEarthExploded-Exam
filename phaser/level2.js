@@ -13,12 +13,15 @@ var level2 = {
 
 	create: function () {
 		"use strict";
+	
 		game.add.image(0, 0,'level2');
         game.world.setBounds(0, 0, 1000, 1250);
 		//  physics, so enable the Arcade Physics system
 		game.physics.startSystem(Phaser.Physics.ARCADE);
 		game.physics.arcade.sortDirection = Phaser.Physics.Arcade.BOTTOM_TOP;
 		
+		score = 0;
+		score1 = 0;
 
 		// button needs to be created here, but is hidden as default
 		button = game.add.button(game.world.centerX-400, 300, 'playAgain', this.actionOnClick, this, 2, 1, 0);
@@ -197,7 +200,7 @@ var level2 = {
 		//  Call callectionDiamond() if player overlaps with a diamond
 		game.physics.arcade.overlap(this.player, this.gasolines, CollectGasoline, null, this);
 		game.physics.arcade.overlap(this.player, this.supplies, CollectSupplies, null, this);
-		game.physics.arcade.overlap(this.player, this.ship, BackToShip, null, this);
+		game.physics.arcade.overlap(this.player, this.ship, BackToShip2, null, this);
 		game.physics.arcade.overlap(this.player, this.bee, HitBee, null, this);
 
 
@@ -285,12 +288,13 @@ function CollectSupplies(player, supply) {
 
 
 
-function BackToShip(player, ship) {
+function BackToShip2(player, ship){
 	"use strict";
 
     // equal or greater than 55 but they must have all waters to go on.
 	if (score >= 85 && score1 === 6) {
-		//  Here is create a tween on the ship created above
+	
+			
 		var tween = game.add.tween(ship);
 		player.kill();
 		//  The object defines the properties to tween.
@@ -302,15 +306,7 @@ function BackToShip(player, ship) {
 		
 		game.sound.stopAll(); 
 		setTimeout(function () {
-			game.state.start("boot");
+			game.state.start("splash2");
 		}, 3000);
 	}
 }
-
-
-
-
-
-
-
-

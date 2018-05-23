@@ -3,7 +3,8 @@ var game = new Phaser.Game(1000, 500, Phaser.CANVAS, 'game');
 var score, bgSound;
 
 // global timer function
-var countDown = 30;
+var countDown = 60;
+
 function formatTime(s) {
 	// Convert seconds (s) to a nicely formatted and padded time string
 	var minutes = "0" + Math.floor(s / 60);
@@ -26,10 +27,16 @@ Main.prototype = {
 		score = 0;
 		// adding all game states
 		game.state.add('boot', boot);
-		//game.state.add('splash1', splash1);
-		//game.state.add('level1', level1);
+		
+		game.state.add('splash1', splash1);
+		game.state.add('level1', level1);
+		
 		game.state.add('splash2', splash2);
 		game.state.add('level2', level2);
+		
+		game.state.add('splash3', splash3);
+		game.state.add('level3', level3);
+		
 		// launching the boot screen
 		game.state.start('boot');
 	}

@@ -249,8 +249,8 @@ function backToShip(player, ship) {
 		}, 1900, 'Linear', true, 0);
 		
 		setTimeout(function () {
-			game.state.start("splash2");
 			game.sound.stopAll(); 
+			game.state.start("splash2");
 		}, 3000);
 	}
 }

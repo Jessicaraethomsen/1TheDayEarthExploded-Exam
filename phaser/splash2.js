@@ -5,7 +5,7 @@ var splash2 = {
       
 		game.add.image(0, 0, 'bg');
 
-		var instructions = game.add.text(game.world.centerX, 200, 'Level 2:\n Fly to PLANET Akala\n\nCOLLECT  all Gas & Engine Parts and back to your ship \n Be Quick &  Beware of the Space Bees!', {
+		var instructions = game.add.text(game.world.centerX, 200, 'Level 2:\n Fly to PLANET Akala\n\nCOLLECT  all Gas & Engine Parts, then back to your ship \n Be Quick & Beware of the KILLER Space Bees!', {
 			font: "20px Rammetto One",
 			align: "center",
 			fill: "#fff",
@@ -20,9 +20,10 @@ var splash2 = {
 		tween.onComplete.add(onComplete, this);
 		
 		// Add the background sound
-		bgSound = game.add.audio('level1Music');
+		bgSound = game.add.audio('level2Music');
 		bgSound.play();
 		bgSound.loopFull();
+		
 
 		setTimeout(function () {
 			game.state.start("level2");
