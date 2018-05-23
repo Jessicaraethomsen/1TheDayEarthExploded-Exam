@@ -7,7 +7,7 @@ var splash3 = {
 		//had to remove the tween because it made a problem with my tween falling too far after I added camera follow
 		game.add.image(0, 0, 'bg');
 
-		var instructions = game.add.text(game.world.centerX, 250, 'Level 1:\n Fly to PLANET Poni-Polu\n\nCOLLECT  all oxygen & water, then back to your ship \n Be Quick &  Beware of the STEALING Cactuses!', {
+		var instructions = game.add.text(game.world.centerX, 250, 'Level 3:\n  You Made it to Lumen Luna!!!\n\nCOLLECT Food, KILL all Jellyfish then back to your ship \n Be Quick!', {
 			font: "20px Rammetto One",
 			align: "center",
 			fill: "#fff",
