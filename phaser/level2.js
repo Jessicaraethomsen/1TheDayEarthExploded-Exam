@@ -251,7 +251,7 @@ var level2 = {
 
 		if (this.timer.running && this.tmp >= 0) {
 			this.txtTimer.text = formatTime(Math.round((this.timerEvent.delay - this.timer.ms) / 1000));
-		} else if (score < 85 && update === true) {
+		} else if (score < 86 && update === true) {
 			level2.loose();			
 			update = false;
 		}
@@ -343,6 +343,7 @@ function BackToShip2(player, ship){
 		
 		game.sound.stopAll(); 
 		setTimeout(function() {
+			
 			game.state.start("splash3");
 		}, 3000);
 	}

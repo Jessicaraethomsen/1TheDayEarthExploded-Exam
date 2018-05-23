@@ -15,9 +15,9 @@ var splash2 = {
 		
 		
 		// Add the background sound
-		bgSound = game.add.audio('level2Music');
-		bgSound.play();
-		bgSound.loopFull();
+		//bgSound2 = game.add.audio('level2Music');
+		//bgSound2.play();
+		//bgSound2.loopFull();
 		
 
 		setTimeout(function () {

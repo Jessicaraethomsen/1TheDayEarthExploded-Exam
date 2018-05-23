@@ -17,9 +17,9 @@ var splash3 = {
 		
 		
 		// Add the background sound
-		bgSound = game.add.audio('level1Music');
-		bgSound.play();
-		bgSound.loopFull();
+		//bgSound = game.add.audio('intro');
+		//bgSound.play();
+		//bgSound.loopFull();
 
 		setTimeout(function () {
 			game.state.start("level3");

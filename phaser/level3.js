@@ -244,7 +244,7 @@ var level3 = {
 
 		if (this.timer.running && this.tmp >= 0) {
 			this.txtTimer.text = formatTime(Math.round((this.timerEvent.delay - this.timer.ms) / 1000));
-		} else if (score < 29 && update === true) {
+		} else if (score < 30 && update === true) {
 			level3.loose();			
 			update = false;
 		}

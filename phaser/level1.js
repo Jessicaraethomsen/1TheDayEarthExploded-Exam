@@ -17,12 +17,29 @@ var level1 = {
 
 		//  physics, so enable the Arcade Physics system
 		game.physics.startSystem(Phaser.Physics.ARCADE);
+		
+		
+		
+			//TIMER
+		
+		// Create a custom timer (global variable countDown + format function in game.js)
+		this.timer = game.time.create();
 
+		// Create a delayed event 1m and 30s from now
+		this.timerEvent = this.timer.add(Phaser.Timer.SECOND * countDown, this.endTimer, this);
 
-		// button needs to be created here, but is hidden as default
-		button = game.add.button(game.world.centerX - 150, 450, 'playAgain', this.actionOnClick, this, 2, 1, 0);
-		button.visible = false;
+		// Start the timer
+		this.timer.start();
 
+		// Display the timer
+		this.txtTimer = game.add.text(900, 10, formatTime(Math.round((this.timerEvent.delay - this.timer.ms) / 1000)), {
+			font: "30px Rammetto One",
+			fill: "#e7ff00"
+		});
+		
+		this.txtTimer.font = 'Rammetto One';
+		this.txtTimer.fixedToCamera = true;
+		
 
 
 		//  The catcus group contains the ground and the multi ledges we can jump on
@@ -97,6 +114,8 @@ var level1 = {
 		this.player.animations.add('right', [2, 3], 10, true);
 
 
+		
+
 		//   Add Ship and physics on the ship
 
 		this.ship = game.add.sprite(game.world.width / 2, game.world.height - 120, 'ship');
@@ -130,6 +149,11 @@ var level1 = {
 		}
 
 
+		// button needs to be created here, but is hidden as default
+		button = game.add.button(game.world.centerX-150, game.world.centerY-50 , 'playAgain', this.actionOnClick, this, 2, 1, 0);
+		button.visible = false;
+
+				
 
 		//  Create the score texts
 		scoreText = game.add.text(16, 16, '', {
@@ -167,7 +191,7 @@ var level1 = {
 		game.physics.arcade.overlap(this.player, this.catcus, hitCatus, null, this);
 
 
-		// Controls... 
+// Controls... 
 		if (this.cursors.left.isDown) {
 			this.player.body.velocity.x = -150;
 
@@ -188,7 +212,43 @@ var level1 = {
 			this.jumper.play();
 		}
 
+		
+		this.tmp = formatTime(Math.round((this.timerEvent.delay - this.timer.ms) / 1000));
+
+		if (this.timer.running && this.tmp >= 0) {
+			this.txtTimer.text = formatTime(Math.round((this.timerEvent.delay - this.timer.ms) / 1000));
+		} else if (score < 61 && update === true) {
+			level1.loose();			
+			update = false;
+		}
+		
+		
 	},
+
+	
+	endTimer: function () {
+		// Stop the timer when the delayed event triggers
+		this.timer.stop();
+	},
+	
+	
+	loose: function () {
+        'use strict';
+		this.player.kill();
+		button.visible = true;
+			
+
+	},
+	
+	
+	actionOnClick: function () {
+		score = 0;
+		score1 = 0;
+		update = true;
+		// launching level 1 again
+		game.state.start('level1');
+	}
+	
 
 };
 
@@ -244,12 +304,13 @@ function backToShip(player, ship) {
 		//  The object defines the properties to tween.
 		this.rocketsound = game.add.audio('rocket');
 		this.rocketsound.play();
+		 
+
 		tween.to({
 			y: -100
 		}, 1900, 'Linear', true, 0);
 		
 		setTimeout(function () {
-			game.sound.stopAll(); 
 			game.state.start("splash2");
 		}, 3000);
 	}
