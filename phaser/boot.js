@@ -45,8 +45,10 @@ var boot = {
 		game.load.image('sky', 'assets/sky.png');
 		game.load.image('level2', 'assets/level2.png');
 		game.load.image('level3', 'assets/level3.png');
+		game.load.image('bgWin', 'assets/bgWin.png');
 		game.load.image('ground', 'assets/platform.png');
 		game.load.image('ground2', 'assets/platform2.png');
+		game.load.image('ground3', 'assets/platform3.png');
 		game.load.image('bubblept', 'assets/oxygen.png');
 		game.load.image('water', 'assets/glass.png');
 		game.load.image('gas', 'assets/gas.png');
@@ -55,6 +57,10 @@ var boot = {
 		game.load.image('jar', 'assets/jar.png');
 		game.load.image('engine', 'assets/engine.png');
 		game.load.image('ship', 'assets/ship.png');
+		game.load.image('confetti', 'assets/confetti.png');
+		game.load.image('bullet', 'assets/light-bolt.png');
+		
+
 		game.load.spritesheet('spaceman', 'assets/spaceman.png', 32, 32);
 
 		// preloading animation sprites
@@ -77,7 +83,7 @@ var boot = {
 		game.load.audio('gas', 'audio/gas.wav');
 		game.load.audio('water', 'audio/water.wav');
 		game.load.audio('jump', 'audio/jump.wav');
-		game.load.audio('loss', 'audio/loss.mp3');
+		game.load.audio('diedfish', 'audio/diedfish.wav');
 		game.load.audio('rocket', 'audio/rocket.wav');
 		
 

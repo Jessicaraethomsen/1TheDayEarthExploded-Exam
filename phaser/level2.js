@@ -5,6 +5,10 @@ var score;
 var scoreText;
 var score1;
 var scoreTxt;
+var bgSound2;
+var rocketsound;
+
+
 
 // variable to control the feedback message display
 var update = true;
@@ -27,6 +31,10 @@ var level2 = {
 		button = game.add.button(game.world.centerX-400, 300, 'playAgain', this.actionOnClick, this, 2, 1, 0);
 		button.fixedToCamera = true;
 		button.visible = false;
+		
+		//Add the background sound
+		bgSound2 = game.add.audio('level2Music');
+		bgSound2.play();
 
 		//TIMER
 		
@@ -68,6 +76,8 @@ var level2 = {
 
 		//  Keeping the ground solid
 		this.ground.body.immovable = true;
+		
+	
 		
 		
 		//  The ledges
@@ -130,6 +140,7 @@ var level2 = {
 		game.add.tween(this.bee).to({ x: 400 }, 4000, Phaser.Easing.Linear.None, true, 0, 1000, true)
 
 
+		
 		//SPACEMAN
 
 		// Spaceman trying to get the oxygen
@@ -155,6 +166,7 @@ var level2 = {
 		this.ship = game.add.sprite(game.world.width / 2, game.world.height - 120, 'ship');
 		game.physics.arcade.enable(this.ship)
 
+	
 
 		//ADD A SERIES OF gasoline TO THE WORLD 10+ points
 		this.gasolines = game.add.group();
@@ -271,6 +283,7 @@ var level2 = {
         'use strict';
 		this.player.kill();
 		button.visible = true;
+		bgSound2.stop();
 			
 
 	},
@@ -287,21 +300,21 @@ var level2 = {
 };
 
 
+//Hittest Functions
+
 function HitBee(player, bee) {
 	"use strict";
 	// Removes the bubble from the screen
 	bee.kill();
 	this.ouch = game.add.audio('loss');
 	this.ouch.play();
-	level2.loose();
-
+	level2.loose();	
 	
 }
 
 
 function CollectGasoline(player, gasoline) {
 	"use strict";
-	
 	this.oxygensound = game.add.audio('oxygen');
 	this.oxygensound.play();
 	// Removes the bubble from the screen
@@ -320,7 +333,7 @@ function CollectSupplies(player, supply) {
 	this.watersound.play();
 	supply.kill();
 	score1++;
-	scoreTxt.setText('Engine Parts: ' + score1.toString());
+	scoreTxt.setText('Laser Guns: ' + score1.toString());
 }
 
 
@@ -337,11 +350,12 @@ function BackToShip2(player, ship){
 		//  The object defines the properties to tween.
 		this.rocketsound = game.add.audio('rocket');
 		this.rocketsound.play();
+		bgSound2.stop();
 		tween.to({
 			y: -100
 		}, 1900, 'Linear', true, 0);
 		
-		game.sound.stopAll(); 
+		 
 		setTimeout(function() {
 			
 			game.state.start("splash3");

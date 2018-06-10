@@ -40,8 +40,11 @@ var level1 = {
 		this.txtTimer.font = 'Rammetto One';
 		this.txtTimer.fixedToCamera = true;
 		
-
-
+		// Add the background sound
+		bgSound = game.add.audio('level1Music');
+		bgSound.play();
+		
+		
 		//  The catcus group contains the ground and the multi ledges we can jump on
 		this.catcus = game.add.group();
 		//  physics on the player
@@ -79,10 +82,6 @@ var level1 = {
 		//  Ledges to hop on
 		//Fifth
 		this.ledge = this.platforms.create(450, 250, 'ground');
-		this.ledge.body.immovable = true;
-
-
-		this.ledge = this.platforms.create(200, 450, 'ground');
 		this.ledge.body.immovable = true;
 
 		//Three
@@ -304,6 +303,7 @@ function backToShip(player, ship) {
 		//  The object defines the properties to tween.
 		this.rocketsound = game.add.audio('rocket');
 		this.rocketsound.play();
+		bgSound.stop();
 		 
 
 		tween.to({

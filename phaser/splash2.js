@@ -5,7 +5,7 @@ var splash2 = {
       
 		game.add.image(0, 0, 'bg');
 
-		var instructions = game.add.text(game.world.centerX, 200, 'Level 2:\n Fly to PLANET Akala\n\nCOLLECT  all Gas & Engine Parts, then back to your ship \n Be Quick & Beware of the KILLER Space Bees!', {
+		var instructions = game.add.text(game.world.centerX, 200, 'Level 2:\n HELLO TEAM...Fly to PLANET Akala\n\nCOLLECT all Space Fuel & Laser Guns, then back to your ship \n Be Quick & Beware of the KILLER Space Bees!', {
 			font: "20px Rammetto One",
 			align: "center",
 			fill: "#fff",
@@ -14,10 +14,6 @@ var splash2 = {
 		instructions.anchor.set(0.5);
 		
 		
-		// Add the background sound
-		//bgSound2 = game.add.audio('level2Music');
-		//bgSound2.play();
-		//bgSound2.loopFull();
 		
 
 		setTimeout(function () {

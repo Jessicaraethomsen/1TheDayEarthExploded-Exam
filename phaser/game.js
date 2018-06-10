@@ -37,6 +37,10 @@ Main.prototype = {
 		game.state.add('splash3', splash3);
 		game.state.add('level3', level3);
 		
+		
+		game.state.add('splashWin', splashWin);
+
+		
 		// launching the boot screen
 		game.state.start('boot');
 	}
